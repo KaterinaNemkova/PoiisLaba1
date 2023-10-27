@@ -11,7 +11,7 @@ namespace UnitTest1
 	public:
 		
 		
-        TEST_METHOD(TestMethod2) {
+        TEST_METHOD(PositiveTest) {
             vector<Rule> rules
             {
                 Rule("aa", "bb"),
@@ -30,7 +30,7 @@ namespace UnitTest1
             // Проверяем, что фактический результат совпадает с ожидаемым
             Assert:: AreEqual(actualOutput, expectedOutput);
         }
-        TEST_METHOD(TestMethod3) {
+        TEST_METHOD(NoRulesTest) {
             vector<Rule> rules;
             MarkovAlgorithm ma(rules);
 
@@ -44,19 +44,19 @@ namespace UnitTest1
             // Проверяем, что фактический результат совпадает с ожидаемым
             Assert::AreEqual(actualOutput, expectedOutput);
         }
-        TEST_METHOD(TestMethod1)
+        TEST_METHOD(EmptyStringTest)
         {
             vector<Rule> rules
             {
                 Rule ("A", "B"),
                 Rule ("B", "C"),
-                Rule ("C", "D")
+                Rule ("C", "")
             };
             MarkovAlgorithm algorithm(rules);
 
             // Задаем входные данные и ожидаемый результат
             string input = "ACACAC";
-            string expectedOutput = "DDDDDD";
+            string expectedOutput = "";
 
             // Применяем правила к входным данным
             string actualOutput = algorithm.apply(input);
